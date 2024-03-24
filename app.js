@@ -1,0 +1,50 @@
+const express = require("express");
+const path = require("path"); // Import the path module
+const bodyParser = require("body-parser");
+const addressRoutes = require("./routes/addressRoutes");
+const cityRoutes = require("./routes/cityRoutes");
+const countryRoutes = require("./routes/countryRoutes");
+const errorHandler = require("./middleware/errorHandling");
+const loggingMiddleware = require("./middleware/logging");
+const pool = require("./db");
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, "public")));
+
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(loggingMiddleware); // Logging middleware
+
+// Routes
+app.use("/api/address", addressRoutes);
+app.use("/api/city", cityRoutes);
+app.use("/api/country", countryRoutes);
+
+// Route to serve index.html
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// Error handling middleware (must be defined last)
+app.use(errorHandler);
+
+// Database Connection
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.error("Error connecting to database:", err);
+    return;
+  }
+  console.log("Connected to database");
+
+  // Release the connection when done
+  connection.release();
+
+  // Start the server after successful database connection
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+});
