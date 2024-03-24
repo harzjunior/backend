@@ -1,50 +1,41 @@
-# Logs
-logs
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# Editor files
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs and runtime data
+logs/
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Build output
+dist/
+build/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# macOS system files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-config.js
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Windows thumbnail cache files
+Thumbs.db
 
-# testing
-/coverage
+# IDE settings
+.idea/
 
-# production
-/build
+# Ignore .env.local.example (copy of .env.example with local overrides)
+!.env.local.example
 
-# misc
-.DS_Store
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Ignore .env.development.local, .env.test.local, .env.production.local (override environment-specific variables)
+.env.*.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.vercel%
+# Ignore Firebase service account key files
+*.firebase-adminsdk.json

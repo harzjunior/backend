@@ -11,6 +11,45 @@ body {
   background-color: #f4f4f4;
 }
 
+/* Styles for the navbar */
+.navbar {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+/* Styles for the search input */
+.navbar input[type="text"] {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* Styles for the left, middle, and right sections of the navbar */
+.navbar .left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .middle {
+  flex: 1;
+  text-align: center;
+}
+
+.navbar .right {
+  display: flex;
+  align-items: center;
+}
+
 header {
   background-color: #333;
   color: #fff;
