@@ -1,86 +1,141 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetchAddresses();
+  // Check which page is loaded and fetch/render data accordingly
+  if (document.URL.includes("address.html")) {
+    fetchAndRenderAddresses();
+  } else if (document.URL.includes("city.html")) {
+    fetchAndRenderCities();
+  } else if (document.URL.includes("country.html")) {
+    fetchAndRenderCountries();
+  } else if (
+    document.URL.endsWith("/") ||
+    document.URL === window.location.origin
+  ) {
+    console.log(document.URL);
+    fetchAndRenderAddresses(); // Fetch and render addresses by default
+  }
 });
 
-// Function to fetch addresses from the backend
-const fetchAddresses = async () => {
+// Function to fetch and render addresses
+async function fetchAndRenderAddresses() {
   try {
-    const response = await fetch("/api/address");
-    if (!response.ok) {
+    // Fetch data from address API
+    const addressResponse = await fetch("/api/address");
+    if (!addressResponse.ok) {
       throw new Error("Failed to fetch addresses");
     }
-    const addresses = await response.json();
-    displayAddresses(addresses);
+    const addresses = await addressResponse.json();
+
+    // Fetch data from city API
+    const cityResponse = await fetch("/api/city");
+    if (!cityResponse.ok) {
+      throw new Error("Failed to fetch cities");
+    }
+    const cities = await cityResponse.json();
+
+    // Fetch data from country API
+    const countryResponse = await fetch("/api/country");
+    if (!countryResponse.ok) {
+      throw new Error("Failed to fetch countries");
+    }
+    const countries = await countryResponse.json();
+
+    // Render addresses with associated city and country
+    renderAddresses(addresses, cities, countries);
   } catch (error) {
     console.error(error.message);
   }
-};
+}
 
-// Function to display addresses on the page
-const displayAddresses = (addresses) => {
+// Function to render addresses on the page
+function renderAddresses(addresses, cities, countries) {
   const addressList = document.getElementById("address-list");
   addressList.innerHTML = ""; // Clear previous content
 
   addresses.forEach((address) => {
-    const addressCard = createAddressCard(address);
+    // Find city and country corresponding to the address
+    const city = cities.find((city) => city.city_id === address.city_id);
+    const country = countries.find(
+      (country) => country.country_id === address.city_id
+    );
+
+    console.log(country);
+    // Create address card
+    const addressCard = createAddressCard(address, city, country);
     addressList.appendChild(addressCard);
   });
-};
+}
 
 // Function to create a card for each address
-const createAddressCard = (address) => {
+function createAddressCard(address, city, country) {
   const addressCard = document.createElement("div");
   addressCard.classList.add("address-card");
 
   const streetAddress = document.createElement("p");
-  streetAddress.textContent = address.street_address;
+  streetAddress.textContent = `Street Address: ${address.street_address}`;
 
-  const city = document.createElement("p");
-  city.textContent = `City: ${address.city_name}`;
+  const cityElement = document.createElement("p");
+  cityElement.textContent = `City: ${city ? city.city_name : "N/A"}`;
+
+  const countryElement = document.createElement("p");
+  countryElement.textContent = `Country: ${
+    country ? country.country_name : "N/A"
+  }`;
 
   addressCard.appendChild(streetAddress);
-  addressCard.appendChild(city);
+  addressCard.appendChild(cityElement);
+  addressCard.appendChild(countryElement);
 
   return addressCard;
-};
-
-// Fetch data from server and render on respective pages
-
-// Function to fetch and render addresses
-async function fetchAndRenderAddresses() {
-  const response = await fetch("/api/address");
-  const addresses = await response.json();
-  const addressList = document.getElementById("addressList");
-  addressList.innerHTML = addresses
-    .map((address) => `<div>${address.addressField}</div>`)
-    .join("");
 }
 
 // Function to fetch and render cities
 async function fetchAndRenderCities() {
-  const response = await fetch("/api/city");
-  const cities = await response.json();
-  const cityList = document.getElementById("cityList");
-  cityList.innerHTML = cities
-    .map((city) => `<div>${city.cityName}</div>`)
-    .join("");
+  try {
+    const response = await fetch("/api/city");
+    if (!response.ok) {
+      throw new Error("Failed to fetch cities");
+    }
+    const cities = await response.json();
+    renderCities(cities);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+// Function to render cities on the page
+function renderCities(cities) {
+  const cityList = document.getElementById("city-list");
+  cityList.innerHTML = ""; // Clear previous content
+
+  cities.forEach((city) => {
+    const cityItem = document.createElement("div");
+    cityItem.textContent = city.city_name;
+    cityList.appendChild(cityItem);
+  });
 }
 
 // Function to fetch and render countries
 async function fetchAndRenderCountries() {
-  const response = await fetch("/api/country");
-  const countries = await response.json();
-  const countryList = document.getElementById("countryList");
-  countryList.innerHTML = countries
-    .map((country) => `<div>${country.countryName}</div>`)
-    .join("");
+  try {
+    const response = await fetch("/api/country");
+    if (!response.ok) {
+      throw new Error("Failed to fetch countries");
+    }
+    const countries = await response.json();
+    renderCountries(countries);
+  } catch (error) {
+    console.error(error.message);
+  }
 }
 
-// Call fetch functions when respective pages are loaded
-if (document.URL.includes("address.html")) {
-  fetchAndRenderAddresses();
-} else if (document.URL.includes("city.html")) {
-  fetchAndRenderCities();
-} else if (document.URL.includes("country.html")) {
-  fetchAndRenderCountries();
+// Function to render countries on the page
+function renderCountries(countries) {
+  const countryList = document.getElementById("country-list");
+  countryList.innerHTML = ""; // Clear previous content
+
+  countries.forEach((country) => {
+    const countryItem = document.createElement("div");
+    countryItem.textContent = country.country_name;
+    countryList.appendChild(countryItem);
+  });
 }
