@@ -9,32 +9,37 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="left">
-            <a href="./pages/address.html">Address</a>
-            <a href="./pages/city.html">City</a>
-            <a href="./pages/country.html">Country</a>
+    <div class="main">
+        <div class="content">
+            <nav class="navbar">
+                <div class="left">
+                    <a href="./pages/address.html">Address</a>
+                    <a href="./pages/city.html">City</a>
+                    <a href="./pages/country.html">Country</a>
+                </div>
+                <div class="middle">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="right">
+                    <a href="/">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </div>
+            </nav>
         </div>
-        <div class="middle">
-            <input type="text" placeholder="Search...">
+        <div class="main-content">
+            <header>
+                <h1>Address Book</h1>
+            </header>
+
+            <section id="address-list">
+                <!-- Address list will be populated dynamically -->
+            </section>
         </div>
-        <div class="right">
-            <a href="/">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
-    <header>
-        <h1>Address Book</h1>
-    </header>
-    <main>
-        <section id="address-list">
-            <!-- Address list will be populated dynamically -->
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Address Book</p>
-    </footer>
+        <footer class="footer">
+            <p>&copy; 2024 Address Book</p>
+        </footer>
+    </div>
     <script src="script.js"></script>
 </body>
 

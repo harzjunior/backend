@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.URL.endsWith("/") ||
     document.URL === window.location.origin
   ) {
-    console.log(document.URL);
     fetchAndRenderAddresses(); // Fetch and render addresses by default
   }
 });
@@ -58,7 +57,6 @@ function renderAddresses(addresses, cities, countries) {
       (country) => country.country_id === address.city_id
     );
 
-    console.log(country);
     // Create address card
     const addressCard = createAddressCard(address, city, country);
     addressList.appendChild(addressCard);
@@ -71,7 +69,7 @@ function createAddressCard(address, city, country) {
   addressCard.classList.add("address-card");
 
   const streetAddress = document.createElement("p");
-  streetAddress.textContent = `Street Address: ${address.street_address}`;
+  streetAddress.textContent = `Popular Site: ${address.street_address}`;
 
   const cityElement = document.createElement("p");
   cityElement.textContent = `City: ${city ? city.city_name : "N/A"}`;
@@ -128,14 +126,28 @@ async function fetchAndRenderCountries() {
   }
 }
 
+// // Function to render countries on the page
+// function renderCountries(countries) {
+//   const countryList = document.getElementById("country-list");
+//   countryList.innerHTML = ""; // Clear previous content
+
+//   countries.forEach((country) => {
+//     const countryItem = document.createElement("div");
+//     countryItem.textContent = country.country_name;
+//     countryList.appendChild(countryItem);
+//   });
+// }
+
 // Function to render countries on the page
 function renderCountries(countries) {
-  const countryList = document.getElementById("country-list");
-  countryList.innerHTML = ""; // Clear previous content
+  const countryTable = document
+    .getElementById("countryTable")
+    .getElementsByTagName("tbody")[0];
+  countryTable.innerHTML = ""; // Clear previous content
 
   countries.forEach((country) => {
-    const countryItem = document.createElement("div");
-    countryItem.textContent = country.country_name;
-    countryList.appendChild(countryItem);
+    const row = document.createElement("tr");
+    countryTable.innerHTML = `<td>${country.country_id}</td><td>${country.country_name}</td>`;
+    countryTable.appendChild(row);
   });
 }
