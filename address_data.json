@@ -1,0 +1,104 @@
+{
+  "countries": [
+    {
+      "name": "Romania",
+      "largest_city": "Bucharest",
+      "popular_address": "Piata Unirii, Bucharest, Romania"
+    },
+    {
+      "name": "Syria",
+      "largest_city": "Damascus",
+      "popular_address": "Marjeh Square, Damascus, Syria"
+    },
+    {
+      "name": "Netherlands",
+      "largest_city": "Amsterdam",
+      "popular_address": "Dam Square, Amsterdam, Netherlands"
+    },
+    {
+      "name": "Chile",
+      "largest_city": "Santiago",
+      "popular_address": "Plaza de Armas, Santiago, Chile"
+    },
+    {
+      "name": "Kazakhstan",
+      "largest_city": "Nur-Sultan",
+      "popular_address": "Astana Square, Nur-Sultan, Kazakhstan"
+    },
+    {
+      "name": "Ecuador",
+      "largest_city": "Guayaquil",
+      "popular_address": "Malecón 2000, Guayaquil, Ecuador"
+    },
+    {
+      "name": "Zambia",
+      "largest_city": "Lusaka",
+      "popular_address": "Arcades Shopping Mall, Lusaka, Zambia"
+    },
+    {
+      "name": "Guatemala",
+      "largest_city": "Guatemala City",
+      "popular_address": "Plaza Mayor, Guatemala City, Guatemala"
+    },
+    {
+      "name": "Belgium",
+      "largest_city": "Brussels",
+      "popular_address": "Grand Place, Brussels, Belgium"
+    },
+    {
+      "name": "Cuba",
+      "largest_city": "Havana",
+      "popular_address": "Old Havana, Havana, Cuba"
+    },
+    {
+      "name": "Greece",
+      "largest_city": "Athens",
+      "popular_address": "Acropolis of Athens, Athens, Greece"
+    },
+    {
+      "name": "Jordan",
+      "largest_city": "Amman",
+      "popular_address": "Rainbow Street, Amman, Jordan"
+    },
+    {
+      "name": "Tunisia",
+      "largest_city": "Tunis",
+      "popular_address": "Avenue Habib Bourguiba, Tunis, Tunisia"
+    },
+    {
+      "name": "Sweden",
+      "largest_city": "Stockholm",
+      "popular_address": "Gamla Stan, Stockholm, Sweden"
+    },
+    {
+      "name": "Azerbaijan",
+      "largest_city": "Baku",
+      "popular_address": "Nizami Street, Baku, Azerbaijan"
+    },
+    {
+      "name": "United Arab Emirates",
+      "largest_city": "Dubai",
+      "popular_address": "Burj Khalifa, Dubai, United Arab Emirates"
+    },
+    {
+      "name": "Hungary",
+      "largest_city": "Budapest",
+      "popular_address": "Fisherman's Bastion, Budapest, Hungary"
+    },
+    {
+      "name": "Honduras",
+      "largest_city": "Tegucigalpa",
+      "popular_address": "Plaza Morazán, Tegucigalpa, Honduras"
+    },
+    {
+      "name": "Belarus",
+      "largest_city": "Minsk",
+      "popular_address": "Victory Square, Minsk, Belarus"
+    },
+    {
+      "name": "Austria",
+      "largest_city": "Vienna",
+      "popular_address": "Schönbrunn Palace, Vienna, Austria"
+    }
+  ]
+}
