@@ -126,17 +126,17 @@ async function fetchAndRenderCountries() {
   }
 }
 
-// // Function to render countries on the page
-// function renderCountries(countries) {
-//   const countryList = document.getElementById("country-list");
-//   countryList.innerHTML = ""; // Clear previous content
+// Function to render countries on the page
+function renderCountries(countries) {
+  const countryList = document.getElementById("country-list");
+  countryList.innerHTML = ""; // Clear previous content
 
-//   countries.forEach((country) => {
-//     const countryItem = document.createElement("div");
-//     countryItem.textContent = country.country_name;
-//     countryList.appendChild(countryItem);
-//   });
-// }
+  countries.forEach((country) => {
+    const countryItem = document.createElement("div");
+    countryItem.textContent = country.country_name;
+    countryList.appendChild(countryItem);
+  });
+}
 
 // Function to render countries on the page
 function renderCountries(countries) {
@@ -147,7 +147,9 @@ function renderCountries(countries) {
 
   countries.forEach((country) => {
     const row = document.createElement("tr");
-    countryTable.innerHTML = `<td>${country.country_id}</td><td>${country.country_name}</td>`;
+    row.innerHTML = `<td>${country.country_id}</td><td>${country.country_name}</td>`;
     countryTable.appendChild(row);
   });
 }
+
+//=============================css functions===================================

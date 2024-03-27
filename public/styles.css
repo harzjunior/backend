@@ -9,38 +9,39 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .main {
+  flex: 1; /* Let .main take up the available space */
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  height: 100vh;
 }
 
 .content {
-  height: 10vh;
-  width: 100vw;
   background-color: #333;
+  color: white;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .main-content {
-  width: 90vw;
-  min-height: 80vh;
-  margin: 0 auto;
+  flex: 1; /* Let .main-content take up the available space */
+  padding: 20px;
 }
 
 /* Styles for the navbar */
 .navbar {
-  flex: 1;
   background-color: #333;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
-  height: 10vh;
-  width: 90vw;
+  padding: 10px;
 }
 
 .navbar a {
@@ -86,16 +87,12 @@ header h1 {
   margin: 0;
 }
 
-main {
-  padding: 2rem;
-}
-
 .footer {
-  height: 10vh;
   background-color: #333;
   color: #fff;
   padding: 1rem;
   text-align: center;
+  margin-top: auto; /* Stick the footer to the bottom */
 }
 
 #address-list {
@@ -107,10 +104,6 @@ main {
 /* Custom styles for address cards can be added here */
 
 /* Page-specific styles */
-h1 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
 
 .address-list,
 .city-list,
