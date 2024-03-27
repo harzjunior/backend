@@ -63,27 +63,43 @@ function renderAddresses(addresses, cities, countries) {
   });
 }
 
-// Function to create a card for each address
-function createAddressCard(address, city, country) {
-  const addressCard = document.createElement("div");
-  addressCard.classList.add("address-card");
+// Function to render addresses on the page
+function renderAddresses(addresses, cities, countries) {
+  const addressTable = document.createElement("table");
+  addressTable.innerHTML = `
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Street Address</th>
+        <th>City</th>
+        <th>Country</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  `;
+  const tbody = addressTable.querySelector("tbody");
 
-  const streetAddress = document.createElement("p");
-  streetAddress.textContent = `Popular Site: ${address.street_address}`;
+  addresses.forEach((address) => {
+    // Find city and country corresponding to the address
+    const city = cities.find((city) => city.city_id === address.city_id);
+    const country = countries.find(
+      (country) => country.country_id === address.city_id
+    );
 
-  const cityElement = document.createElement("p");
-  cityElement.textContent = `City: ${city ? city.city_name : "N/A"}`;
+    // Create table row
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${address.address_id}</td>
+      <td>${address.street_address}</td>
+      <td>${city ? city.city_name : "N/A"}</td>
+      <td>${country ? country.country_name : "N/A"}</td>
+    `;
+    tbody.appendChild(row);
+  });
 
-  const countryElement = document.createElement("p");
-  countryElement.textContent = `Country: ${
-    country ? country.country_name : "N/A"
-  }`;
-
-  addressCard.appendChild(streetAddress);
-  addressCard.appendChild(cityElement);
-  addressCard.appendChild(countryElement);
-
-  return addressCard;
+  const addressList = document.getElementById("address-list");
+  addressList.innerHTML = ""; // Clear previous content
+  addressList.appendChild(addressTable);
 }
 
 // Function to fetch and render cities

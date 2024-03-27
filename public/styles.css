@@ -161,10 +161,12 @@ th {
   color: #f2f2f2f2;
 }
 
-#countryTable tbody tr:nth-child(even) {
+#countryTable tbody tr:nth-child(even),
+#cityTable tbody tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-#countryTable tbody tr:nth-child(odd) {
+#countryTable tbody tr:nth-child(odd),
+#cityTable tbody tr:nth-child(odd) {
   background-color: #dddddd;
 }
