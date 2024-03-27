@@ -44,7 +44,11 @@
                             <th>message</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        <td class="message-cell" data-full-message="${contact.message}">${truncatedMessage}</td>
+                    </tbody>
+                    <!-- Placeholder for error message -->
+                    <div id="errorMessage" style="color: red;"></div>
                 </table>
             </div>
         </div>
@@ -53,7 +57,7 @@
         </footer>
     </div>
     <script src="../script.js"></script> <!-- Link to your JavaScript file -->
-    <script src="admin.js" type="module"></script>
+    <script src="./admin.js" type="module"></script>
 </body>
 
 </html>

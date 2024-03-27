@@ -16,6 +16,10 @@ async function fetchAndRenderContacts() {
   } catch (error) {
     console.error(error.message);
     // Provide user feedback if needed
+    const errorMessage = document.createElement("p");
+    errorMessage.textContent =
+      "Failed to fetch contacts. Please try again later.";
+    document.querySelector("#contactTable").appendChild(errorMessage);
   }
 }
 

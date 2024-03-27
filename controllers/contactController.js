@@ -1,17 +1,37 @@
-const { insertContact } = require("../models/contactModel");
 const pool = require("../db");
 
-const submitContactForm = (req, res) => {
+const { insertContact, checkEmailExists } = require("../models/contactModel");
+
+const submitContactForm = async (req, res) => {
   const { contactName, contactEmail, contactMessage } = req.body;
 
-  insertContact(contactName, contactEmail, contactMessage, (error, results) => {
-    if (error) {
-      console.error("Error submitting message to MySQL:", error);
-      res.status(500).json({ error: "Internal Server Error" });
-    } else {
-      res.json({ message: "Submitted successfully" });
+  try {
+    // Check if the email already exists in the database
+    const emailExists = await checkEmailExists(contactEmail);
+    if (emailExists) {
+      return res
+        .status(400)
+        .json({ error: "Email already exists in the database" });
     }
-  });
+
+    // If the email doesn't exist, insert the contact into the database
+    insertContact(
+      contactName,
+      contactEmail,
+      contactMessage,
+      (error, results) => {
+        if (error) {
+          console.error("Error submitting message to MySQL:", error);
+          res.status(500).json({ error: "Internal Server Error" });
+        } else {
+          res.json({ message: "Submitted successfully" });
+        }
+      }
+    );
+  } catch (error) {
+    console.error("Error checking email:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 const getContacts = (req, res) => {

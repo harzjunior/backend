@@ -244,13 +244,16 @@ table {
   width: 95%;
   border-collapse: collapse;
   margin: 20px auto;
+  table-layout: auto;
 }
 
 th,
 td {
   border: 1px solid #424242;
-  text-align: left;
+  text-align: center;
   padding: 8px;
+  word-wrap: break-word;
+  max-width: 500px; /* Set maximum width for cell content */
 }
 
 td:last-child {
@@ -262,14 +265,24 @@ th {
   color: #f2f2f2f2;
 }
 
+#contactTable tbody tr:nth-child(even),
 #addressTable tbody tr:nth-child(even),
 #countryTable tbody tr:nth-child(even),
 #cityTable tbody tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
+#contactTable tbody tr:nth-child(odd),
 #addressTable tbody tr:nth-child(odd),
 #countryTable tbody tr:nth-child(odd),
 #cityTable tbody tr:nth-child(odd) {
   background-color: #dddddd;
+}
+
+.message-cell {
+  max-width: 150px; /* Adjust as needed */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer; /* Show pointer cursor when hovering over the cell */
 }

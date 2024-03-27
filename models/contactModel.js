@@ -1,6 +1,17 @@
-// models/contactModel.js
-
 const pool = require("../db");
+
+const checkEmailExists = (email) => {
+  return new Promise((resolve, reject) => {
+    const query = "SELECT COUNT(*) AS count FROM contact WHERE email = ?";
+    pool.query(query, [email], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results[0].count > 0);
+      }
+    });
+  });
+};
 
 const insertContact = (contactName, contactEmail, contactMessage, callback) => {
   const insertQuery =
@@ -18,4 +29,4 @@ const insertContact = (contactName, contactEmail, contactMessage, callback) => {
   );
 };
 
-module.exports = { insertContact };
+module.exports = { checkEmailExists, insertContact };
