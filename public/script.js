@@ -126,29 +126,32 @@ async function fetchAndRenderCountries() {
   }
 }
 
+//====================city and country==================================
 // Function to render countries on the page
 function renderCountries(countries) {
-  const countryList = document.getElementById("country-list");
-  countryList.innerHTML = ""; // Clear previous content
-
-  countries.forEach((country) => {
-    const countryItem = document.createElement("div");
-    countryItem.textContent = country.country_name;
-    countryList.appendChild(countryItem);
+  renderData(countries, "countryTable", (country) => {
+    return `<td>${country.country_id}</td><td>${country.country_name}</td>`;
   });
 }
 
-// Function to render countries on the page
-function renderCountries(countries) {
-  const countryTable = document
-    .getElementById("countryTable")
-    .getElementsByTagName("tbody")[0];
-  countryTable.innerHTML = ""; // Clear previous content
+// Function to render cities on the page
+function renderCities(cities) {
+  renderData(cities, "cityTable", (city) => {
+    return `<td>${city.city_id}</td><td>${city.city_name}</td>`;
+  });
+}
 
-  countries.forEach((country) => {
+// Generic function to render data onto the page
+function renderData(data, targetTable, generateRowContent) {
+  const tableBody = document
+    .getElementById(targetTable)
+    .getElementsByTagName("tbody")[0];
+  tableBody.innerHTML = ""; // Clear previous content
+
+  data.forEach((item) => {
     const row = document.createElement("tr");
-    row.innerHTML = `<td>${country.country_id}</td><td>${country.country_name}</td>`;
-    countryTable.appendChild(row);
+    row.innerHTML = generateRowContent(item);
+    tableBody.appendChild(row);
   });
 }
 
