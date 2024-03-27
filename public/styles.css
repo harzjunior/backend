@@ -166,32 +166,32 @@ header h1 {
   margin-top: 20px;
 }
 
-#contact-form {
+#contactForm {
   max-width: 500px;
   margin: 0 auto;
 }
 
-.form-group {
+.input-label {
   margin-bottom: 20px;
 }
 
-.form-group label {
+.input-label label {
   display: block;
   font-weight: bold;
   color: #333;
   margin-bottom: 5px;
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group textarea {
+.input-label input[type="text"],
+.input-label input[type="email"],
+.input-label textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.form-group textarea {
+.input-label textarea {
   height: 150px;
 }
 

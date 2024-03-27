@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const addressRoutes = require("./routes/addressRoutes");
 const cityRoutes = require("./routes/cityRoutes");
 const countryRoutes = require("./routes/countryRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 const errorHandler = require("./middleware/errorHandling");
 const loggingMiddleware = require("./middleware/logging");
 const pool = require("./db");
@@ -23,6 +24,7 @@ app.use(loggingMiddleware); // Logging middleware
 app.use("/api/address", addressRoutes);
 app.use("/api/city", cityRoutes);
 app.use("/api/country", countryRoutes);
+app.use(contactRoutes);
 
 // Route to serve index.html
 app.get("/", (req, res) => {
@@ -48,3 +50,25 @@ pool.getConnection((err, connection) => {
     console.log(`Server is running on port ${PORT}`);
   });
 });
+
+//===============================================contact=================================================
+// this route to handle the contact submit
+// app.post("/api/contact", (req, res) => {
+//   const { contactName, contactEmail, contactMessage } = req.body;
+
+//   // Insert user into the users table
+//   const insertUserQuery =
+//     "INSERT INTO contact (name, email, message) VALUES (?, ?, ?)";
+//   pool.query(
+//     insertUserQuery,
+//     [contactName, contactEmail, contactMessage],
+//     (error, results) => {
+//       if (error) {
+//         console.error("Error submitting message to MySQL:", error);
+//         res.status(500).json({ error: "Internal Server Error" });
+//       } else {
+//         res.json({ message: "Submitted successfully" });
+//       }
+//     }
+//   );
+// });
