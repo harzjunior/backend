@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City Page</title>
+    <title>Admin Page</title>
     <link rel="stylesheet" href="../styles.css"> <!-- Link to your CSS file -->
 </head>
 
@@ -31,16 +31,17 @@
         </div>
         <div class="main-content">
             <header>
-                <h1>Cities</h1>
+                <h1>Admin</h1>
             </header>
-            <div id="city-list">
+            <div id="admin-list">
                 <!-- Cities will be dynamically inserted here -->
                 <!-- Display the book list -->
-                <table id="cityTable">
+                <table id="contactTable">
                     <thead>
                         <tr>
-                            <th>Number</th>
-                            <th>Country</th>
+                            <th>Name</th>
+                            <th>email</th>
+                            <th>message</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -52,6 +53,7 @@
         </footer>
     </div>
     <script src="../script.js"></script> <!-- Link to your JavaScript file -->
+    <script src="admin.js" type="module"></script>
 </body>
 
 </html>

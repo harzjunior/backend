@@ -13,9 +13,10 @@
         <div class="content">
             <nav class="navbar">
                 <div class="left">
-                    <a href="./pages/address.html">Address</a>
+                    <a href="./pages/admin.html">Admin</a>
                     <a href="./pages/city.html">City</a>
                     <a href="./pages/country.html">Country</a>
+                    <a href="./pages/address.html">Address</a>
                 </div>
                 <div class="middle">
                     <input type="text" placeholder="Search...">
@@ -29,7 +30,9 @@
         </div>
         <div class="main-content">
             <header>
+                <code id="usernameDisplay"></code>>username</code>
                 <h1>Address Book</h1>
+                <code id="emailDisplay"></code>>contact</code>
             </header>
             <section id="address-list">
                 <!-- Address list will be populated dynamically -->
@@ -51,6 +54,12 @@
         </footer>
     </div>
     <script src="script.js"></script>
+    <script>
+        // Retrieve username from local storage
+        const username = localStorage.getItem("username");
+        // Update HTML content with the username
+        document.getElementById("usernameDisplay").textContent = username ? username : 'Guru';
+    </script>
 </body>
 
 </html>

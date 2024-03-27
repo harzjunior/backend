@@ -1,4 +1,5 @@
 const { insertContact } = require("../models/contactModel");
+const pool = require("../db");
 
 const submitContactForm = (req, res) => {
   const { contactName, contactEmail, contactMessage } = req.body;
@@ -13,4 +14,16 @@ const submitContactForm = (req, res) => {
   });
 };
 
-module.exports = { submitContactForm };
+const getContacts = (req, res) => {
+  const query = "SELECT name, email, message FROM contact";
+  pool.query(query, (error, results) => {
+    if (error) {
+      console.error("Error fetching contacts:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    } else {
+      res.json(results);
+    }
+  });
+};
+
+module.exports = { submitContactForm, getContacts };

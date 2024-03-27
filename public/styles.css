@@ -34,6 +34,19 @@ body {
   padding: 20px;
 }
 
+.main-content header {
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.main-content header code {
+  font-weight: 500;
+}
+
 /* Styles for the navbar */
 .navbar {
   background-color: #333;
