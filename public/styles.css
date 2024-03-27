@@ -121,6 +121,94 @@ header h1 {
   border-radius: 5px;
 }
 
+/* About page specific styles */
+#about-section {
+  margin-top: 20px;
+}
+
+#about-section article {
+  margin-bottom: 40px;
+}
+
+#about-section h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#about-section p {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+#about-section ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+#about-section blockquote {
+  font-style: italic;
+  color: #888;
+  margin-top: 20px;
+}
+
+#about-section blockquote p {
+  margin-bottom: 10px;
+}
+
+#about-section blockquote cite {
+  color: #444;
+}
+
+/* Contact page specific styles */
+#contact-section {
+  margin-top: 20px;
+}
+
+#contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group textarea {
+  height: 150px;
+}
+
+button[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #555;
+}
+
 /* Responsive styles */
 @media screen and (max-width: 768px) {
   .container {
@@ -161,11 +249,13 @@ th {
   color: #f2f2f2f2;
 }
 
+#addressTable tbody tr:nth-child(even),
 #countryTable tbody tr:nth-child(even),
 #cityTable tbody tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
+#addressTable tbody tr:nth-child(odd),
 #countryTable tbody tr:nth-child(odd),
 #cityTable tbody tr:nth-child(odd) {
   background-color: #dddddd;

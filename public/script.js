@@ -65,19 +65,8 @@ function renderAddresses(addresses, cities, countries) {
 
 // Function to render addresses on the page
 function renderAddresses(addresses, cities, countries) {
-  const addressTable = document.createElement("table");
-  addressTable.innerHTML = `
-    <thead>
-      <tr>
-        <th>Number</th>
-        <th>Street Address</th>
-        <th>City</th>
-        <th>Country</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  `;
-  const tbody = addressTable.querySelector("tbody");
+  const tbody = document.querySelector("#addressTable tbody");
+  tbody.innerHTML = ""; // Clear previous content
 
   addresses.forEach((address) => {
     // Find city and country corresponding to the address
@@ -96,10 +85,6 @@ function renderAddresses(addresses, cities, countries) {
     `;
     tbody.appendChild(row);
   });
-
-  const addressList = document.getElementById("address-list");
-  addressList.innerHTML = ""; // Clear previous content
-  addressList.appendChild(addressTable);
 }
 
 // Function to fetch and render cities
