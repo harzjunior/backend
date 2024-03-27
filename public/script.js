@@ -39,33 +39,20 @@ async function fetchAndRenderAddresses() {
     const countries = await countryResponse.json();
 
     // Render addresses with associated city and country
-    renderAddresses(addresses, cities, countries);
+    renderAddressesTable(addresses, cities, countries);
   } catch (error) {
     console.error(error.message);
+    // You can provide user feedback here, such as displaying an error message on the page
   }
 }
 
 // Function to render addresses on the page
-function renderAddresses(addresses, cities, countries) {
-  const addressList = document.getElementById("address-list");
-  addressList.innerHTML = ""; // Clear previous content
-
-  addresses.forEach((address) => {
-    // Find city and country corresponding to the address
-    const city = cities.find((city) => city.city_id === address.city_id);
-    const country = countries.find(
-      (country) => country.country_id === address.city_id
-    );
-
-    // Create address card
-    const addressCard = createAddressCard(address, city, country);
-    addressList.appendChild(addressCard);
-  });
-}
-
-// Function to render addresses on the page
-function renderAddresses(addresses, cities, countries) {
+function renderAddressesTable(addresses, cities, countries) {
   const tbody = document.querySelector("#addressTable tbody");
+  if (!tbody) {
+    console.error("Table body element not found");
+    return;
+  }
   tbody.innerHTML = ""; // Clear previous content
 
   addresses.forEach((address) => {
@@ -78,11 +65,11 @@ function renderAddresses(addresses, cities, countries) {
     // Create table row
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td>${address.address_id}</td>
-      <td>${address.street_address}</td>
-      <td>${city ? city.city_name : "N/A"}</td>
-      <td>${country ? country.country_name : "N/A"}</td>
-    `;
+          <td>${address.address_id}</td>
+          <td>${address.street_address}</td>
+          <td>${city ? city.city_name : "N/A"}</td>
+          <td>${country ? country.country_name : "N/A"}</td>
+        `;
     tbody.appendChild(row);
   });
 }
@@ -95,21 +82,17 @@ async function fetchAndRenderCities() {
       throw new Error("Failed to fetch cities");
     }
     const cities = await response.json();
-    renderCities(cities);
+    renderCitiesTable(cities);
   } catch (error) {
     console.error(error.message);
+    // Provide user feedback if needed
   }
 }
 
 // Function to render cities on the page
-function renderCities(cities) {
-  const cityList = document.getElementById("city-list");
-  cityList.innerHTML = ""; // Clear previous content
-
-  cities.forEach((city) => {
-    const cityItem = document.createElement("div");
-    cityItem.textContent = city.city_name;
-    cityList.appendChild(cityItem);
+function renderCitiesTable(cities) {
+  renderDataTable(cities, "cityTable", (city) => {
+    return `<td>${city.city_id}</td><td>${city.city_name}</td>`;
   });
 }
 
@@ -121,29 +104,22 @@ async function fetchAndRenderCountries() {
       throw new Error("Failed to fetch countries");
     }
     const countries = await response.json();
-    renderCountries(countries);
+    renderCountriesTable(countries);
   } catch (error) {
     console.error(error.message);
+    // Provide user feedback if needed
   }
 }
 
-//====================city and country==================================
 // Function to render countries on the page
-function renderCountries(countries) {
-  renderData(countries, "countryTable", (country) => {
+function renderCountriesTable(countries) {
+  renderDataTable(countries, "countryTable", (country) => {
     return `<td>${country.country_id}</td><td>${country.country_name}</td>`;
   });
 }
 
-// Function to render cities on the page
-function renderCities(cities) {
-  renderData(cities, "cityTable", (city) => {
-    return `<td>${city.city_id}</td><td>${city.city_name}</td>`;
-  });
-}
-
-// Generic function to render data onto the page
-function renderData(data, targetTable, generateRowContent) {
+// Generic function to render data onto the page in a table format
+function renderDataTable(data, targetTable, generateRowContent) {
   const tableBody = document
     .getElementById(targetTable)
     .getElementsByTagName("tbody")[0];
@@ -155,5 +131,3 @@ function renderData(data, targetTable, generateRowContent) {
     tableBody.appendChild(row);
   });
 }
-
-//=============================css functions===================================
