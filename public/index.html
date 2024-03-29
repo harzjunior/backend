@@ -23,6 +23,7 @@
                 </div>
                 <div class="right">
                     <a href="/">Home</a>
+                    <a href="./pages/blog.html">Blog</a>
                     <a href="./pages/about.html">About</a>
                     <a href="./pages/contact.html">Contact</a>
                 </div>
@@ -30,9 +31,7 @@
         </div>
         <div class="main-content">
             <header>
-                <code id="usernameDisplay"></code>>username</code>
                 <h1>Address Book</h1>
-                <code id="emailDisplay"></code>>contact</code>
             </header>
             <section id="address-list">
                 <!-- Address list will be populated dynamically -->
@@ -54,12 +53,6 @@
         </footer>
     </div>
     <script src="script.js"></script>
-    <script>
-        // Retrieve username from local storage
-        const username = localStorage.getItem("username");
-        // Update HTML content with the username
-        document.getElementById("usernameDisplay").textContent = username ? username : 'Guru';
-    </script>
 </body>
 
 </html>

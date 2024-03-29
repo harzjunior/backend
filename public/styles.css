@@ -179,7 +179,8 @@ header h1 {
   margin-top: 20px;
 }
 
-#contactForm {
+#contactForm,
+#commentForm {
   max-width: 500px;
   margin: 0 auto;
 }
@@ -216,6 +217,7 @@ button[type="submit"] {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 button[type="submit"]:hover {
@@ -236,6 +238,52 @@ button[type="submit"]:hover {
   .navbar .right {
     display: none;
   }
+}
+
+/* ====================blog================== */
+#blog-section {
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* targets all articles except the first one */
+/* #blog-section article:not(:first-child) {
+  width: 80%;
+  margin: 0 auto;
+} */
+
+/* targets all articles except the nth child */
+/* #blog-section article:nth-child(3) {
+  width: 80%;
+  margin: 0 auto;
+} */
+
+section h2 {
+  margin: 20px 0;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+article p {
+  padding-bottom: 10px;
+}
+
+ol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 30px;
+}
+
+pre {
+  background-color: #dddd;
+  width: fit-content;
+  margin: 20px auto;
+  padding-top: 30px;
+  padding-right: 30px;
 }
 
 /* ============================================================ */

@@ -34,7 +34,7 @@ document
         console.log(data); // Log the response for debugging
         alert("Submitted successfully!");
         // Redirect to the home page
-        window.location.href = "./";
+        window.location.href = "../";
       })
       .catch((error) => console.error("Error submitting:", error.message));
   });

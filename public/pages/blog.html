@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <!-- Link to your main CSS file -->
+</head>
+
+<body>
+  <div class="main">
+    <div class="content">
+      <nav class="navbar">
+        <div class="left">
+          <a href="admin.html">Admin</a>
+          <a href="city.html">City</a>
+          <a href="country.html">Country</a>
+          <a href="address.html">Address</a>
+        </div>
+        <div class="middle">
+          <input type="text" placeholder="Search..." />
+        </div>
+        <div class="right">
+          <a href="/">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+    <div class="main-content">
+      <header>
+        <h1>Blog</h1>
+      </header>
+      <section id="blog-section">
+        <article>
+          <h2>
+            Connecting MySQL with Vanilla JavaScript and Node.js: A Simple
+            Guide
+          </h2>
+          <p>
+            In the vast landscape of web development, data management stands
+            as a crucial pillar. Whether you're building a personal blog or a
+            complex web application, interacting with databases efficiently is
+            essential. MySQL, a widely used open-source relational database
+            management system, is a popular choice for many developers due to
+            its reliability and robust features. In this blog post, we'll
+            explore how to connect MySQL with vanilla JavaScript and Node.js,
+            using only HTML and CSS without relying on fancy libraries or
+            frameworks.
+          </p>
+        </article>
+        <article>
+          <h2>Setting Up the Environment</h2>
+          <p>
+            Before diving into the code, let's ensure we have everything set
+            up properly:
+          </p>
+          <ol>
+            <li>
+              <strong>MySQL Database:</strong> Make sure you have MySQL
+              installed on your system. Create a database and a table to work
+              with.
+            </li>
+            <li>
+              <strong>Node.js:</strong> Install Node.js if you haven't
+              already. Node.js allows us to run JavaScript on the server side.
+            </li>
+            <li>
+              <strong>HTML and CSS Files:</strong> Create HTML and CSS files
+              to structure and style our front-end interface.
+            </li>
+          </ol>
+        </article>
+        <article>
+          <h2>Connecting MySQL with Node.js</h2>
+          <p>
+            Now, let's connect our MySQL database with Node.js. We'll use the
+            <code>mysql</code> package, which is a MySQL client for Node.js,
+            to achieve this.
+          </p>
+          <pre>
+              <code>// Importing required modules
+                const mysql = require('mysql');
+                // Creating a connection to MySQL
+                const connection = mysql.createConnection({
+                  host: 'localhost',
+                  user: 'your_username',
+                  password: 'your_password',
+                  database: 'your_database_name'
+                });
+                
+                // Connecting to the database
+                connection.connect((err) => {
+                  if (err) {
+                    console.error('Error connecting to MySQL:', err);
+                    return;
+                  }
+                  console.log('Connected to MySQL database!');
+                });
+                
+                // Perform database operations here
+                // For example, you can execute SQL queries, fetch data, insert/update records, etc.
+                
+                // Close the connection when done
+                connection.end();
+              </code>
+            </pre>
+          <p>Replace <code>'localhost'</code>, <code>'your_username'</code>,
+            <code>'your_password'</code>, and
+            <code>'your_database_name'</code> with your MySQL server details.
+          </p>
+        </article>
+        <article>
+          <h2>Front-End Interface with HTML and CSS</h2>
+          <p>
+            Let's create a simple HTML form to interact with our MySQL
+            database:
+          </p>
+          <pre>
+          <code>&lt;!DOCTYPE html&gt;
+          &lt;html lang="en"&gt;
+          &lt;head&gt;
+              &lt;meta charset="UTF-8"&gt;
+              &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+              &lt;title&gt;MySQL Connection&lt;/title&gt;
+              &lt;link rel="stylesheet" href="styles.css"&gt;
+          &lt;/head&gt;
+          &lt;body&gt;
+              &lt;h1&gt;MySQL Connection&lt;/h1&gt;
+              &lt;form id="dataForm"&gt;
+                  &lt;label for="name"&gt;Name:&lt;/label&gt;
+                  &lt;input type="text" id="name" name="name" required&gt;
+                  &lt;label for="email"&gt;Email:&lt;/label&gt;
+                  &lt;input type="email" id="email" name="email" required&gt;
+                  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+             &lt;/form&gt;
+          &lt;script src="script.js"&gt;&lt;/script&gt;
+          &lt;/body&gt;
+          &lt;/html&gt;
+        </code>
+      </pre>
+        </article>
+        <article>
+          <h2>Conclusion</h2>
+          <p>
+            With just vanilla JavaScript, Node.js, HTML, and CSS, we've
+            successfully connected to a MySQL database and created a basic
+            front-end interface. This simple setup demonstrates the core
+            principles of interacting with databases in web development
+            without relying on any fancy libraries or frameworks. From here,
+            you can expand and enhance your application according to your
+            specific requirements. Happy coding!
+          </p>
+        </article>
+      </section>
+      <section id="comment-section">
+        <h2>Leave a Comment</h2>
+        <form id="commentForm">
+          <div class="input-label">
+            <label for="commentName">Name:</label>
+            <input type="text" placeholder="name" id="commentName" name="commentName" required />
+          </div>
+          <div class="input-label">
+            <label for="commentEmail">Email:</label>
+            <input type="email" placeholder="email" id="commentEmail" name="commentEmail" required />
+          </div>
+          <div class="input-label">
+            <label for="commentMessage">Comment:</label>
+            <textarea id="commentMessage" placeholder="comment" name="commentMessage" rows="4" required></textarea>
+          </div>
+          <button type="submit" id="commentBtn">Post</button>
+        </form>
+      </section>
+    </div>
+    <footer class="footer">
+      <p>&copy; 2024 Address Book</p>
+    </footer>
+  </div>
+</body>
+
+</html>
