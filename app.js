@@ -1,12 +1,15 @@
 const express = require("express");
 const path = require("path"); // Import the path module
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const addressRoutes = require("./routes/addressRoutes");
 const cityRoutes = require("./routes/cityRoutes");
 const countryRoutes = require("./routes/countryRoutes");
 const contactRoutes = require("./routes/contactRoutes");
-const userRoutes = require("./routes/userRoutes"); // Import user routes
-const commentRoutes = require("./routes/commentRoutes"); // Import comment routes
+const userRoutes = require("./routes/userRoutes");
+const commentRoutes = require("./routes/commentRoutes");
+const registerRoutes = require("./routes/registerRoutes");
+const loginRoutes = require("./routes/loginRoutes");
 const errorHandler = require("./middleware/errorHandling");
 const loggingMiddleware = require("./middleware/logging");
 const pool = require("./db");
@@ -18,6 +21,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "public")));
 
 // Middleware
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(loggingMiddleware); // Logging middleware
@@ -27,8 +31,10 @@ app.use("/api/address", addressRoutes);
 app.use("/api/city", cityRoutes);
 app.use("/api/country", countryRoutes);
 app.use(contactRoutes);
-app.use(userRoutes); // Use user routes
-app.use(commentRoutes); // Use comment routes
+app.use(userRoutes);
+app.use(commentRoutes);
+app.use(registerRoutes);
+app.use(loginRoutes);
 
 // Route to serve index.html
 app.get("/", (req, res) => {

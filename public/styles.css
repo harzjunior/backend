@@ -214,18 +214,33 @@ header h1 {
 }
 
 /* Contact page specific styles */
-#contact-section {
+#contact-section,
+#login-section,
+#register-section {
   margin-top: 20px;
 }
 
 #contactForm,
-#commentForm {
+#commentForm,
+#loginForm,
+#registerForm {
   max-width: 500px;
   margin: 0 auto;
 }
 
+#contactForm button,
+#commentForm button,
+#loginForm button,
+#registerForm button {
+  float: right;
+}
+
 .input-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 20px;
+  gap: 20px;
 }
 
 .input-label label {
@@ -236,9 +251,10 @@ header h1 {
 }
 
 .input-label input[type="text"],
+.input-label input[type="password"],
 .input-label input[type="email"],
 .input-label textarea {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -256,7 +272,7 @@ button[type="submit"] {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 100%;
+  width: 80%;
 }
 
 button[type="submit"]:hover {

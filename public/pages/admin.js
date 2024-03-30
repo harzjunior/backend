@@ -11,15 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function fetchAndRenderContacts() {
   try {
-    let contacts = JSON.parse(sessionStorage.getItem("contacts"));
-    if (!contacts) {
-      const response = await fetch("/api/contact");
-      if (!response.ok) {
-        throw new Error("Failed to fetch contacts");
-      }
-      contacts = await response.json();
-      sessionStorage.setItem("contacts", JSON.stringify(contacts));
+    const response = await fetch("/api/contact");
+    if (!response.ok) {
+      throw new Error("Failed to fetch contacts");
     }
+    const contacts = await response.json();
     renderContactsTable(contacts);
   } catch (error) {
     console.error(error.message);
@@ -33,15 +29,11 @@ async function fetchAndRenderContacts() {
 
 async function fetchAndRenderUsers() {
   try {
-    let users = JSON.parse(sessionStorage.getItem("users"));
-    if (!users) {
-      const response = await fetch("/api/user");
-      if (!response.ok) {
-        throw new Error("Failed to fetch users");
-      }
-      users = await response.json();
-      sessionStorage.setItem("users", JSON.stringify(users));
+    const response = await fetch("/api/user");
+    if (!response.ok) {
+      throw new Error("Failed to fetch users");
     }
+    const users = await response.json();
     renderUsersTable(users);
   } catch (error) {
     console.error(error.message);
