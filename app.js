@@ -5,6 +5,8 @@ const addressRoutes = require("./routes/addressRoutes");
 const cityRoutes = require("./routes/cityRoutes");
 const countryRoutes = require("./routes/countryRoutes");
 const contactRoutes = require("./routes/contactRoutes");
+const userRoutes = require("./routes/userRoutes"); // Import user routes
+const commentRoutes = require("./routes/commentRoutes"); // Import comment routes
 const errorHandler = require("./middleware/errorHandling");
 const loggingMiddleware = require("./middleware/logging");
 const pool = require("./db");
@@ -25,6 +27,8 @@ app.use("/api/address", addressRoutes);
 app.use("/api/city", cityRoutes);
 app.use("/api/country", countryRoutes);
 app.use(contactRoutes);
+app.use(userRoutes); // Use user routes
+app.use(commentRoutes); // Use comment routes
 
 // Route to serve index.html
 app.get("/", (req, res) => {
