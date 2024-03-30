@@ -264,6 +264,20 @@ header h1 {
   height: 150px;
 }
 
+#logoutBtn {
+  background-color: #ccc;
+  color: #434343;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#logoutBtn:hover {
+  background-color: #999;
+  color: #fff;
+}
+
 button[type="submit"] {
   background-color: #333;
   color: #fff;
