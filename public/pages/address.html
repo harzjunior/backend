@@ -20,7 +20,7 @@
                     <a href="address.html">Address</a>
                 </div>
                 <div class="middle">
-                    <input type="text" placeholder="Search...">
+                    <input type="text" id="searchInput" placeholder="Search...">
                 </div>
                 <div class="right">
                     <a href="/">Home</a>
@@ -58,12 +58,14 @@
         </footer>
     </div>
     <script src="../script.js"></script>
+    <script src="./search.js" type="module"></script>
     <script>
         // Retrieve username from local storage
         const username = localStorage.getItem("username");
         // Update HTML content with the username
         document.getElementById("usernameDisplay").textContent = username ? username : 'Guru';
     </script>
+
 </body>
 
 </html>
