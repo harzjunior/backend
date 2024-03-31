@@ -310,13 +310,39 @@ button[type="submit"]:hover {
 }
 
 /* ====================blog================== */
-#blog-section {
+#blog-section,
+#commentList {
   width: 70vw;
   display: flex;
   flex-direction: column;
   gap: 50px;
   margin: 0 auto;
   padding: 20px 0;
+}
+
+#comment-section h2 {
+  width: 80vw;
+  margin: 20px auto;
+}
+
+/* .blog-details,
+.comment-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} */
+
+.comment-item {
+  padding-bottom: 10px;
+}
+
+.comment-text {
+  width: fit-content;
+  border-bottom: 1px solid #9d9b9b;
+}
+
+#commentForm {
+  margin-top: 5rem;
 }
 
 /* targets all articles except the first one */
@@ -330,6 +356,20 @@ button[type="submit"]:hover {
   width: 80%;
   margin: 0 auto;
 } */
+
+p {
+  color: #555;
+}
+
+h2,
+h3,
+h4 {
+  color: #434343;
+}
+
+h6 {
+  color: #666;
+}
 
 section h2 {
   margin: 20px 0;

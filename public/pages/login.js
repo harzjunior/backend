@@ -66,7 +66,7 @@ document
         document.getElementById("loginForm").reset();
 
         // Reload the page to fetch updated data and show book input fields
-        // location.reload(true);
+        location.reload(true);
 
         // Redirect to the home page
         window.location.href = "./address.html";

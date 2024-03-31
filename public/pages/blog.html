@@ -158,6 +158,27 @@
       </section>
       <section id="comment-section">
         <h2>Leave a Comment</h2>
+        <section id="blog-section">
+          <article>
+            <div class="blog-details">
+              <h4>Title:</h4>
+              <h6 id="blog-title">Sample Blog Post</h6>
+            </div>
+            <p id="blog-content">This is a sample blog post. You can replace it with your actual blog content. This
+              simple setup demonstrates the core principles of interacting with databases in web development without
+              relying on any fancy libraries or frameworks. From here, you can expand and enhance your application
+              according to your specific requirements. Happy coding!</p>
+          </article>
+        </section>
+        <section id="commentList">
+          <article id="comment-item-template" style="display: none;">
+            <div class="comment-item">
+              <h4 class="comment-name"></h4>
+              <h6 class="comment-email"></h6>
+            </div>
+            <p class="comment-text"></p>
+          </article>
+        </section>
         <form id="commentForm">
           <div class="input-label">
             <label for="commentName">Name:</label>
@@ -174,6 +195,7 @@
           <button type="submit" id="commentBtn">Post</button>
         </form>
       </section>
+
     </div>
     <footer class="footer">
       <p>&copy; 2024 Address Book</p>
