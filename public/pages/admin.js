@@ -9,6 +9,20 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("usersBtn").addEventListener("click", showUsers);
 });
 
+// Check if the user is logged in and hide the login button if they are
+const isLoggedIn =
+  localStorage.getItem("token") && localStorage.getItem("username");
+if (isLoggedIn) {
+  document.getElementById("logoutBtn").style.display = "block";
+  // document.getElementById("loginBtn").style.display = "none";
+} else {
+  document.getElementById("logoutBtn").style.display = "none";
+  // document.getElementById("loginBtn").style.display = "block";
+}
+
+// Add event listener to the logout button
+document.getElementById("logoutBtn").addEventListener("click", logout);
+
 // Function to fetch and render contacts data
 async function fetchAndRenderContacts() {
   try {

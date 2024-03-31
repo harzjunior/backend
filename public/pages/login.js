@@ -69,7 +69,7 @@ document
         // location.reload(true);
 
         // Redirect to the home page
-        window.location.href = "../";
+        window.location.href = "./address.html";
       })
       .catch((error) => console.error("Error logging in:", error.message));
   });
