@@ -1,0 +1,46 @@
+1. Address Table:
+   - address_id: INT AUTO_INCREMENT PRIMARY KEY
+   - street_address: VARCHAR(255)
+   - city_id: INT
+   - postal_code: VARCHAR(20)
+   - created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   - updated_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+2. City Table:
+   - city_id: INT AUTO_INCREMENT PRIMARY KEY
+   - city_name: VARCHAR(100)
+   - country_id: INT
+   - created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   - updated_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+3. Country Table:
+   - country_id: INT AUTO_INCREMENT PRIMARY KEY
+   - country_name: VARCHAR(100)
+   - created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   - updated_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+4. Users Table:
+   - user_id: INT AUTO_INCREMENT PRIMARY KEY
+   - username: VARCHAR(100)
+   - email: VARCHAR(100)
+   - password: VARCHAR(255)
+   - created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   - updated_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+5. Comments Table:
+   - comment_id: INT AUTO_INCREMENT PRIMARY KEY
+   - user_id: INT
+   - guest_name: VARCHAR(100)
+   - guest_email: VARCHAR(100)
+   - comment_text: TEXT
+   - created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   - updated_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+   - FOREIGN KEY (user_id) REFERENCES users(user_id)
+
+6. Contact Table:
+   - contact_id: INT AUTO_INCREMENT PRIMARY KEY
+   - name: VARCHAR(255)
+   - email: VARCHAR(255)
+   - message: TEXT
+   - created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   - updated_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
