@@ -1,7 +1,3 @@
-Sure, I'll integrate the database table definitions into the README. Here's the updated version:
-
----
-
 # Address Book App
 
 This application is an address book that allows users to manage addresses, cities, countries, and contacts. It provides RESTful API endpoints for various operations related to address management.
