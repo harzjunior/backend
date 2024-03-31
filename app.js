@@ -13,6 +13,7 @@ const loginRoutes = require("./routes/loginRoutes");
 const errorHandler = require("./middleware/errorHandling");
 const loggingMiddleware = require("./middleware/logging");
 const pool = require("./db");
+const { authenticateToken } = require("./middleware/auth");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
