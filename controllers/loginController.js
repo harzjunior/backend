@@ -1,3 +1,4 @@
+require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const loginModel = require("../models/loginModel");
@@ -20,7 +21,7 @@ const login = (req, res) => {
 
         if (isPasswordValid) {
           // Password is correct, generate and return a JWT token
-          const token = jwt.sign({ userId: user.id }, "sauce", {
+          const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY, {
             expiresIn: "1h", // You can adjust the expiration time
           });
           res.json({ token, username: user.username }); // Send token and username to the client

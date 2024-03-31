@@ -13,7 +13,7 @@ const loginRoutes = require("./routes/loginRoutes");
 const errorHandler = require("./middleware/errorHandling");
 const loggingMiddleware = require("./middleware/logging");
 const pool = require("./db");
-const { authenticateToken } = require("./middleware/auth");
+// const { authenticateToken } = require("./middleware/auth");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -61,25 +61,3 @@ pool.getConnection((err, connection) => {
     console.log(`Server is running on port ${PORT}`);
   });
 });
-
-//===============================================contact=================================================
-// this route to handle the contact submit
-// app.post("/api/contact", (req, res) => {
-//   const { contactName, contactEmail, contactMessage } = req.body;
-
-//   // Insert user into the users table
-//   const insertUserQuery =
-//     "INSERT INTO contact (name, email, message) VALUES (?, ?, ?)";
-//   pool.query(
-//     insertUserQuery,
-//     [contactName, contactEmail, contactMessage],
-//     (error, results) => {
-//       if (error) {
-//         console.error("Error submitting message to MySQL:", error);
-//         res.status(500).json({ error: "Internal Server Error" });
-//       } else {
-//         res.json({ message: "Submitted successfully" });
-//       }
-//     }
-//   );
-// });
