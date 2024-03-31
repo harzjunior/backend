@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ) {
     fetchAndRenderAddresses(); // Fetch and render addresses by default
   }
+  displayCountryName();
 
   // Check if the user is logged in and hide the login button if they are
   const isLoggedIn =
@@ -53,11 +54,30 @@ async function fetchAndRenderAddresses() {
     }
     const countries = await countryResponse.json();
 
+    // Select a random country name
+    const randomCountryIndex = Math.floor(Math.random() * countries.length);
+    const countryName = countries[randomCountryIndex].country_name;
+
+    // Set the country name in local storage
+    localStorage.setItem("country", countryName);
+
     // Render addresses with associated city and country
     renderAddressesTable(addresses, cities, countries);
   } catch (error) {
     console.error(error.message);
     // You can provide user feedback here, such as displaying an error message on the page
+  }
+}
+
+// Function to display the country name on the page
+function displayCountryName() {
+  // Retrieve country name from local storage
+  const countryName = localStorage.getItem("country");
+
+  // Update the content of the code element with the country name
+  const countryDisplay = document.getElementById("countryDisplay");
+  if (countryDisplay && countryName) {
+    countryDisplay.textContent = countryName;
   }
 }
 
